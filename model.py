@@ -39,7 +39,17 @@ df_encoded = pd.get_dummies(df, columns=categorical_columns, drop_first=True)
 print(df_encoded.info())
 
 # Định nghĩa features (X) và target (y)
-X = df_encoded.drop(columns=['Attrition_Flag_Existing Customer'])
+X = df_encoded[[
+    "Customer_Age",
+    "Dependent_count",
+    "Months_on_book",
+    "Total_Relationship_Count",
+    "Credit_Limit",
+    'Total_Amt_Chng_Q4_Q1',
+    'Total_Trans_Amt',
+    'Total_Trans_Ct',
+    'Total_Ct_Chng_Q4_Q1',
+]]
 y = df_encoded['Attrition_Flag_Existing Customer']
 
 # Tính toán và vẽ biểu đồ Feature Importance dựa trên Random Forest Classifier
